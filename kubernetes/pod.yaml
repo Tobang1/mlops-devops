@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backup
+  labels:
+    app: backup
+spec:
+  replicas: 1  # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: backup
+  template:
+    metadata:
+      labels:
+        app: backup
+    spec:
+      containers:
+      - name: backup
+        image: speedyrogue007/postgresbackup:latest
+        envFrom:
+          - secretRef:
+              name: backup
+        imagePullPolicy: Always
+        # args:
+        # - /bin/bash
+        # - -c
+        # - cd /home/root; ls; bash postgres-backup.sh;
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backup
+type: Opaque
+data:
+  aws-access-key-id: QUtJQVZGTU1QNFJJWUVaR1NPVjM=
+  secret-access-key: T000VXdWbCtpTU0xRGR6NVU3RXBZOXVBUVhWQml4cFJYYnZ6T0tqRA==
+  AWS_DEFAULT_REGION: ZXUtd2VzdC0y
+  POSTGRES_HOST: cG9zdGdyZXNxbC5zaGFyZWR0b29saW5nLnN2Yy5jbHVzdGVyLmxvY2Fs
+  S3_BUCKET: czM6Ly9idWNrZXQtbmFtZQ==
+
