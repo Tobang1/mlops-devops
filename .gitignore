@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 /Terraform/eks-with-resource/.terraform/
+/Terraform/eks-with-gpt-module/.terraform/
+/Terraform/eks-with-module-simple/.terraform/
+/Terraform/eks-with-module-complex/.terraform/
 # dependencies
 /node_modules
 /.pnp

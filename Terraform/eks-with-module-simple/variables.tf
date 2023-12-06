@@ -66,26 +66,12 @@ variable "admin_usernames" {
   description = "Name of admin users and service accounts"
 }
 
-variable "namespaces" {
-  type = list(string)
-  description = "Kubernetes namespaces to create"
-}
+# variable "namespaces" {
+#   type = list(string)
+#   description = "Kubernetes namespaces to create"
+# }
 
 ################
 # ECR variables
 ################
 
-variable "ecr_repos" {
-  type = map(any)
-  description = "List of ECR repos and configs, see example in default"
-  default = {
-    "career_service" = {
-      name = "career"
-      tags = {
-        Name        = "career"
-        Description = "Career Service ECR"
-        Enviroment  = "dev"
-      }
-    }
-  }
-}
